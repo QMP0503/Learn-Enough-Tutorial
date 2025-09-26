@@ -70,7 +70,7 @@ gem "sassc"
 
 gem "rails-controller-testing"
 
-gem "bcrypt", "3.1.18"
+gem "bcrypt", "3.1.20"
 gem "faker", "~> 3.2"
 gem "kaminari", "~> 1.2"
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
