@@ -1,0 +1,56 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= gravatar_for @member, size: 80 %>
+      <h1><%= @member.name %></h1>
+      <span><%= link_to "← view my profile", @member, class: "btn btn-outline-secondary btn-sm" %></span>
+      <span><strong>Microposts:</strong> <%= @member.microposts.count %></span>
+    </section>
+    
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    
+    <% if @members.any? %>
+      <section>
+        <h5 class="text-center mb-3"><%= @title %> Preview</h5>
+        <div class="user_avatars">
+          <% @members.limit(12).each do |member| %>
+            <%= link_to gravatar_for(member, size: 30), member, 
+                title: member.name, 
+                class: "d-inline-block" %>
+          <% end %>
+          <% if @members.count > 12 %>
+            <div class="mt-2">
+              <small class="text-muted">and <%= @members.count - 12 %> more...</small>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </aside>
+  
+  <div class="col-md-8">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="mb-0"><%= @title %> (<%= @members.count %>)</h3>
+    </div>
+    
+    <% if @members.any? %>
+      <div class="card">
+        <ul class="users follow list-unstyled mb-0">
+          <%= render @members %>
+        </ul>
+      </div>
+      
+      <div class="mt-4 d-flex justify-content-center">
+        <%= paginate @members %>
+      </div>
+    <% else %>
+      <div class="text-center py-5">
+        <h5 class="text-muted">No <%= @title.downcase %> yet</h5>
+        <p class="text-muted">When <%= @member.name %> <%= @title == 'Following' ? 'follows someone' : 'gets followers' %>, they'll show up here.</p>
+      </div>
+    <% end %>
+  </div>
+</div>

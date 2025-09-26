@@ -1,0 +1,14 @@
+<%= form_with(model: @micropost, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="mb-3">
+    <%= f.text_area :content, placeholder: "Compose new micropost...", class: "form-control", rows: 3 %>
+  </div>
+  <div class="mb-3">
+    <span class="image">
+      <%= f.file_field :image, class: "form-control" %>
+    </span>
+  </div>
+  <div class="d-grid">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  </div>
+<% end %>

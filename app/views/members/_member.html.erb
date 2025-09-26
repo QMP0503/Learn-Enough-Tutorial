@@ -1,0 +1,11 @@
+<li>
+  <%= gravatar_for member, size: 50 %>
+  <%= link_to member.name, member %>
+  <% if current_member.admin? && !current_member?(member) %>
+    | <%= link_to "delete", member, data: { 
+                                      "turbo-method": :delete, 
+                                      "turbo-confirm": "You sure?" 
+                                    },
+                                    class: "text-danger" %>
+  <% end %>
+</li>
