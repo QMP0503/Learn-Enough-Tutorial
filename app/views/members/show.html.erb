@@ -1,0 +1,32 @@
+<% provide(:title, @member.name) %>
+<div class="row member-profile">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= gravatar_for @member, size: 80 %>
+      <h1><%= @member.name %></h1>
+      <span><strong>Microposts:</strong> <%= @member.microposts.count %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <% if @member.microposts.any? %>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Microposts (<%= @member.microposts.count %>)</h3>
+      </div>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <div class="mt-4 d-flex justify-content-center">
+        <%= paginate @microposts %>
+      </div>
+    <% else %>
+      <div class="text-center py-5">
+        <h5 class="text-muted">No microposts yet</h5>
+        <p class="text-muted">When <%= @member.name %> posts something, it'll show up here.</p>
+      </div>
+    <% end %>
+  </div>
+</div>

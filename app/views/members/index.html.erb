@@ -1,0 +1,23 @@
+<% provide(:title, 'All members') %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="mb-0">All Members</h1>
+      <span class="badge bg-secondary fs-6"><%= @members.total_count %> members</span>
+    </div>
+
+    <div class="mb-3 d-flex justify-content-center">
+      <%= paginate @members %>
+    </div>
+
+    <div class="card">
+      <ul class="members list-unstyled mb-0">
+        <%= render @members %>
+      </ul>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-center">
+      <%= paginate @members %>
+    </div>
+  </div>
+</div>
