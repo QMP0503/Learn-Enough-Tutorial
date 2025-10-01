@@ -20,11 +20,11 @@ Member.create!(name:  "Example Member",
                 activated_at: Time.zone.now)
 end
 
-# Generate microposts for a subset of members.
+# Generate quotes for a subset of members.
 members = Member.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(word_count: 5)
-  members.each { |member| member.microposts.create!(content: content) }
+  members.each { |member| member.quotes.create!(content: content) }
 end
 
 # Create following relationships.

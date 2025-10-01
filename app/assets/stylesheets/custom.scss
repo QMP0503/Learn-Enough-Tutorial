@@ -30,6 +30,7 @@ body {
 .navbar {
   padding: 0.5rem 0; /* Compact navbar padding */
   min-height: 60px; /* Set consistent navbar height */
+  z-index: 1030; /* Ensure navbar stays above other content */
 }
 
 .navbar-brand {
@@ -85,6 +86,22 @@ body {
   display: flex;
   align-items: center;
   min-height: 50px;
+}
+
+/* Dropdown menu positioning */
+.navbar .dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position dropdown below the navbar */
+  left: 0;
+  z-index: 1000; /* Lower than navbar but above page content */
+  margin-top: 0;
+  border-top: none;
+  border-radius: 0 0 0.375rem 0.375rem;
+}
+
+/* Ensure dropdown doesn't interfere with navbar */
+.navbar .dropdown {
+  position: relative;
 }
 
 section {
@@ -452,8 +469,8 @@ input {
   }
 }
 
-/* Microposts */
-.microposts {
+/* Quotes */
+.quotes {
   list-style: none;
   padding: 0;
   
@@ -789,7 +806,7 @@ span.image {
     }
   }
   
-  .micropost_form {
+  .quote_form {
     background-color: white;
     border-radius: 0.375rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -892,5 +909,24 @@ span.image {
   &:hover {
     background-color: #f8f9fa;
     transform: translateX(5px);
+  }
+}
+
+/* Pagination improvements */
+.pagination {
+  .page-item.disabled .page-link {
+    color: #6c757d !important;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .page-link {
+    transition: all 0.2s ease;
+    
+    &:hover:not(.disabled) {
+      transform: translateY(-1px);
+    }
   }
 }

@@ -1,5 +1,5 @@
 class Member < ApplicationRecord
-  has_many :microposts, dependent: :destroy
+  has_many :quotes, foreign_key: "author_id", dependent: :destroy
   has_many :active_relationships,  class_name:  "Relationship",
                                    foreign_key: "follower_id",
                                    dependent:   :destroy
@@ -99,9 +99,9 @@ class Member < ApplicationRecord
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :member_id"
-    Micropost.where("member_id IN (#{following_ids})
-                     OR member_id = :member_id", member_id: id)
-             .includes(:member, image_attachment: :blob)
+    Quote.where("author_id IN (#{following_ids})
+                 OR author_id = :member_id", member_id: id)
+         .includes(:author, image_attachment: :blob)
   end
 
   private

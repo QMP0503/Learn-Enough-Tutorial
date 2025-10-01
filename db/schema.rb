@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_24_175624) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_01_133909) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,13 +54,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_24_175624) do
     t.datetime "reset_sent_at"
   end
 
-  create_table "microposts", force: :cascade do |t|
+  create_table "quotes", force: :cascade do |t|
     t.text "content"
-    t.integer "member_id", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id", "created_at"], name: "index_microposts_on_member_id_and_created_at"
-    t.index ["member_id"], name: "index_microposts_on_member_id"
+    t.index ["author_id", "created_at"], name: "index_quotes_on_author_id_and_created_at"
+    t.index ["author_id"], name: "index_quotes_on_author_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -75,5 +75,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_24_175624) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "microposts", "members"
+  add_foreign_key "quotes", "members", column: "author_id"
 end

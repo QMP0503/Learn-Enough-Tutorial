@@ -5,7 +5,7 @@
       <%= gravatar_for @member, size: 80 %>
       <h1><%= @member.name %></h1>
       <span><%= link_to "← view my profile", @member, class: "btn btn-outline-secondary btn-sm" %></span>
-      <span><strong>Microposts:</strong> <%= @member.microposts.count %></span>
+      <span><strong>Quotes:</strong> <%= @member.quotes.count %></span>
     </section>
     
     <section class="stats">

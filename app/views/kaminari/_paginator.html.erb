@@ -1,8 +1,22 @@
 <%= paginator.render do %>
   <nav>
     <ul class="pagination">
-      <%= first_page_tag unless current_page.first? %>
-      <%= prev_page_tag unless current_page.first? %>
+      <% if current_page.first? %>
+        <li class="page-item disabled">
+          <span class="page-link text-muted">First</span>
+        </li>
+      <% else %>
+        <%= first_page_tag %>
+      <% end %>
+      
+      <% if current_page.first? %>
+        <li class="page-item disabled">
+          <span class="page-link text-muted">Previous</span>
+        </li>
+      <% else %>
+        <%= prev_page_tag %>
+      <% end %>
+      
       <% each_page do |page| %>
         <% if page.left_outer? || page.right_outer? || page.inside_window? %>
           <%= page_tag page %>
@@ -10,8 +24,22 @@
           <%= gap_tag %>
         <% end %>
       <% end %>
-      <%= next_page_tag unless current_page.last? %>
-      <%= last_page_tag unless current_page.last? %>
+      
+      <% if current_page.last? %>
+        <li class="page-item disabled">
+          <span class="page-link text-muted">Next</span>
+        </li>
+      <% else %>
+        <%= next_page_tag %>
+      <% end %>
+      
+      <% if current_page.last? %>
+        <li class="page-item disabled">
+          <span class="page-link text-muted">Last</span>
+        </li>
+      <% else %>
+        <%= last_page_tag %>
+      <% end %>
     </ul>
   </nav>
 <% end %>

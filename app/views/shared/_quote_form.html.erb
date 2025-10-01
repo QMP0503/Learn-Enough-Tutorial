@@ -1,7 +1,7 @@
-<%= form_with(model: @micropost, local: true) do |f| %>
+<%= form_with(model: @quote, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="mb-3">
-    <%= f.text_area :content, placeholder: "Compose new micropost...", class: "form-control", rows: 3 %>
+    <%= f.text_area :content, placeholder: "Share your thoughts...", class: "form-control", rows: 3 %>
   </div>
   <div class="mb-3">
     <span class="image">
@@ -9,6 +9,6 @@
     </span>
   </div>
   <div class="d-grid">
-    <%= f.submit "Post", class: "btn btn-primary" %>
+    <%= f.submit "Share Quote", class: "btn btn-primary" %>
   </div>
 <% end %>

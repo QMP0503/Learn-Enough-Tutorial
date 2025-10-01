@@ -66,10 +66,10 @@ class MemberTest < ActiveSupport::TestCase
     assert_not @member.authenticated?(:remember, "")
   end
 
-  test "associated microposts should be destroyed" do
+  test "associated quotes should be destroyed" do
     @member.save
-    @member.microposts.create!(content: "Lorem ipsum")
-    assert_difference "Micropost.count", -1 do
+    @member.quotes.create!(content: "Lorem ipsum")
+    assert_difference "Quote.count", -1 do
       @member.destroy
     end
   end

@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if logged_in?
-      @micropost = current_member.microposts.build
+      @quote = current_member.quotes.build
       @feed_items = current_member.feed.page(params[:page])
     end
   end

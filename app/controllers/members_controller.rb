@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     redirect_to root_url and return unless @member.activated?
-    @microposts = @member.microposts.page(params[:page])
+    @quotes = @member.quotes.page(params[:page])
   end
   def new
     @member = Member.new

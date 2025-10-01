@@ -2,5 +2,5 @@
   <%= link_to gravatar_for(current_member, size: 80), current_member %>
   <h1><%= current_member.name %></h1>
   <span><%= link_to "view my profile", current_member, class: "btn btn-outline-secondary btn-sm" %></span>
-  <span class="d-block mt-2"><%= pluralize(current_member.microposts.count, "micropost") %></span>
+  <span class="d-block mt-2"><%= pluralize(current_member.quotes.count, "quote") %></span>
 </div>
